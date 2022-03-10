@@ -8,7 +8,7 @@ import NewRecipe from "../pages/NewRecipe";
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
+   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {

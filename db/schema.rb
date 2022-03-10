@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_08_180403) do
+ActiveRecord::Schema.define(version: 2022_03_10_014953) do
+
+  create_table "habits", force: :cascade do |t|
+    t.string "habit_name"
+    t.string "goal_description"
+    t.integer "goal_days"
+    t.integer "user_id", null: false
+    t.integer "goal_tracker"
+    t.string "color_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_habits_on_user_id"
+  end
 
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id"
@@ -31,4 +43,5 @@ ActiveRecord::Schema.define(version: 2022_03_08_180403) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "habits", "users"
 end

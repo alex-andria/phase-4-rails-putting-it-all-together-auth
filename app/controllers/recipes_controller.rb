@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
 
     def index
-      render json: Recipe.all
+      # render json: Recipe.all
+      render json: @current_user.recipes
     end
   
     def create

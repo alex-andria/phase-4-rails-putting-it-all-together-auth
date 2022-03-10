@@ -4,6 +4,8 @@ import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import RecipeList from "../pages/RecipeList";
 import NewRecipe from "../pages/NewRecipe";
+import NewHabit from "../pages/NewHabit";
+import HabitList from "../pages/HabitList";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,16 +24,22 @@ function App() {
   return (
     <>
       <NavBar user={user} setUser={setUser} />
+
       <main>
         <Switch>
           <Route path="/new">
             <NewRecipe user={user} />
           </Route>
+          <Route path="/newHabit">
+            <NewHabit user={user} />
+          </Route>
           <Route path="/">
-            <RecipeList />
+            {/* <RecipeList /> */}
+            <HabitList />
           </Route>
         </Switch>
       </main>
+      
     </>
   );
 }

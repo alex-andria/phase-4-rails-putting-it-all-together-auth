@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Error, Input, FormField, Label } from "../styles";
+import {Error} from "../styles";
+import Habit from "./Habit.png";
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -27,38 +28,49 @@ function LoginForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormField>
-        <Label htmlFor="username">Username</Label>
-        <Input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="password">Password</Label>
-        <Input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
-        </Button>
-      </FormField>
-      <FormField>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
-      </FormField>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="imgcontainer">
+          <img src={Habit} alt="Habitual Logo" className="avatar" />
+        </div>
+
+
+        <div className="container">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            autoComplete="off"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div className="container">
+          <button variant="fill" color="primary" type="submit">
+              {isLoading ? "Loading..." : "Login"}
+            </button>
+        </div>
+
+        <div className="container">
+          <h3>
+            {errors.map((err) => (
+              <Error key={err}>{err}</Error>
+            ))}
+          </h3>
+        </div>
+  
+      </form>
+    </div>
   );
 }
 

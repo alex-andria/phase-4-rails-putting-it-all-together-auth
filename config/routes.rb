@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :recipes, only: [:index, :create]
+  resources :habits
+  resources :recipes, only: [:index, :create, :show]
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
